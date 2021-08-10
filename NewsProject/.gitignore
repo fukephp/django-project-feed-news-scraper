@@ -1,0 +1,3 @@
+.envScriptsactivate
+env/
+celerybeat-schedule.*
