@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 
 import celery
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-9^(7o+w#i@-2eybr1)(&#x$1xu!lblu_jv_m7v^7k*wbvk&)p7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_celery_beat',
+    'django_celery_results',
     'rest_framework',
     'rest_framework.authtoken',
     'NewsApi'
@@ -75,21 +77,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'NewsProject.wsgi.application'
 
-CELERY_BROKER_URL = 'amqps://dyfzvfrn:PBew9WMIBbwsXoN7tz1wOCQdVxmEOmO3@cow.rmq2.cloudamqp.com/dyfzvfrn'
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
+        'PORT': os.environ.get('POSTGRES_PORT'),
     }
 }
+
+# CELERY_BROKER_URL = 'amqps://dyfzvfrn:PBew9WMIBbwsXoN7tz1wOCQdVxmEOmO3@cow.rmq2.cloudamqp.com/dyfzvfrn'
+CELERY_BROKER_URL = 'amqp://rabbitmq'
+
+
 
 
 # Password validation
