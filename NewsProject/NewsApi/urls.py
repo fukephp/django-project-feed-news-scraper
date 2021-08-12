@@ -1,4 +1,5 @@
 from django import urls
+from django import db
 from django.db import router
 from django.urls import path
 from django.urls.conf import include
@@ -11,8 +12,8 @@ routers.register('articles', ArticleViewSet, basename='articles')
 routers.register('symbols', SymbolViewSet, basename='symbols')
 
 urlpatterns = [
-    path('rss/get_news_by_symbol/', get_rss_news_feed),
-    path('rss/post_news_by_symbol/', post_rss_news_feed),
+    path('rss/get_news_by_symbol/', get_rss_news_feed, name="get_news"),
+    path('rss/post_news_by_symbol/', post_rss_news_feed, name="post_news"),
     path('api/', include(routers.urls)),
     path('api/<int:pk>/', include(routers.urls)),
     # path('article/', ArticleAPIView.as_view()),
