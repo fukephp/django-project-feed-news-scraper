@@ -28,7 +28,7 @@ Docker-compose one container with four services
 ## Instalation
 Clone project from this github repository.
 
-    git clone repository-name
+    git clone repository-url project-name
 
 When the project is donwloaded in the root file there is `Dockerfile`, `docker-compose.yml` and `requirements.txt`.
 These files will be used only for running the project docker container.
@@ -66,4 +66,14 @@ When starting the docker container we also use the celery command to activate on
 
 This command will monitor rss news feeds and store them in database. In `NewsProject/celery.py` you can find all beat scheadule. For evey beat it checks difrent news symbols
 
-To access articles api list use `/api/articles/` route
+### Running tests
+All tests can be found in direcotry `NewApi/tests/`
+Command that you run tests in container is
+
+    docker-compose run web sh -c "cd NewsProject && python manage.py test --debug-mode"
+For developming testing use command `python manage.py test --debug-mode` in NewsProject folder
+
+### RabbitMQ managment tool
+For monitoring celery beat schedules you can see in managment tool http://localhost:15672/#/
+
+**Hint** To access articles api list use `/api/articles/` route

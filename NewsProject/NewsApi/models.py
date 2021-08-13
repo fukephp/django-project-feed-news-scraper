@@ -18,7 +18,6 @@ class Article(models.Model):
     link = models.CharField(max_length=300)
     published = models.DateTimeField()
     symbol = models.CharField(max_length=100,null=True)
-    # symbol = models.ManyToOneRel(models, Symbol, 'name')
     # symbol = models.ForeignKey(Symbol, related_name="articles", on_delete=models.CASCADE, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

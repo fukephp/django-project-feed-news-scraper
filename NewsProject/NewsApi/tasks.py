@@ -20,6 +20,7 @@ def get_and_store_news(args):
             "title": item.title,
             "description": item.summary,
             "link": item.link,
+            "symbol": args,
             "published": datetime.datetime.fromtimestamp(published_date_tp)
         }
         serializer = ArticleSerializer(data=item_data)

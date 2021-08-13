@@ -62,6 +62,7 @@ def post_rss_news_feed(request):
             "title": item.title,
             "description": item.summary,
             "link": item.link,
+            "symbol": "AAPL",
             "published": datetime.datetime.fromtimestamp(published_date_tp)
         }
         serializer = ArticleSerializer(data=item_data)
