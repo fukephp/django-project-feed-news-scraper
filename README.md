@@ -76,4 +76,5 @@ For developming testing use command `python manage.py test --debug-mode` in News
 ### RabbitMQ managment tool
 For monitoring celery beat schedules you can see in managment tool http://localhost:15672/#/
 
-**Hint** To access articles api list use `/api/articles/` route
+### Other
+**Hint:** To access articles api list use `/api/articles/` route
