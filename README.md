@@ -25,7 +25,7 @@ Docker-compose one container with four services
  - **RabbitMQ:**  https://hub.docker.com/_/rabbitmq
  - **Celery:** https://hub.docker.com/_/celery
 
-## Instalation
+## Installation
 Clone project from this github repository.
 
     git clone repository-url project-name
