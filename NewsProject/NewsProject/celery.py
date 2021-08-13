@@ -22,24 +22,24 @@ app = Celery('NewsProject')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.conf.beat_schedule = {
-    'get_and_store_news_aapl_20s': {
+    'get_and_store_news_aapl_60s': {
         'task': 'NewsApi.tasks.get_and_store_news',
-        'schedule': 20.0,
+        'schedule': 60.0,
         'args': ('AAPL',)
     },
-    'get_and_store_news_twtr_20s': {
+    'get_and_store_news_twtr_60s': {
         'task': 'NewsApi.tasks.get_and_store_news',
-        'schedule': 20.0,
+        'schedule': 60.0,
         'args': ('TWTR',)
     },
-    'get_and_store_news_gcgold_20s': {
+    'get_and_store_news_gcgold_60s': {
         'task': 'NewsApi.tasks.get_and_store_news',
-        'schedule': 20.0,
+        'schedule': 60.0,
         'args': ('GC=F(GOLD)',)
     },
-    'get_and_store_news_intc_20s': {
+    'get_and_store_news_intc_60s': {
         'task': 'NewsApi.tasks.get_and_store_news',
-        'schedule': 20.0,
+        'schedule': 60.0,
         'args': ('INTC',)
     },
 }

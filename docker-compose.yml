@@ -32,7 +32,6 @@ services:
       - db
       - rabbitmq
       - celery_worker
-      - celery_beat
   
   # rabbitmq:
   #   image: rabbitmq:3-management-alpine
@@ -52,17 +51,16 @@ services:
     depends_on:
       - rabbitmq
       - db
-      - celery_beat
   
-  celery_beat:
-    <<: *web
-    command: >
-      sh -c "cd NewsProject && 
-      celery -A NewsProject beat --loglevel=info"
-    ports: []
-    depends_on:
-      - rabbitmq
-      - db
+  # celery_beat:
+  #   <<: *web
+  #   command: >
+  #     sh -c "cd NewsProject && 
+  #     celery -A NewsProject beat --loglevel=info"
+  #   ports: []
+  #   depends_on:
+  #     - rabbitmq
+  #     - db
       
 volumes: 
   db:
